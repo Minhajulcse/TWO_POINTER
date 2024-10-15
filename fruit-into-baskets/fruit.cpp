@@ -13,9 +13,15 @@ class Solution {
         for(int i = 0; i < n; i++) {
             frq[arr[i]]++;
             if(frq.size() > 2) {
-                frq[arr[l]]--;
-                if(frq[arr[l]] == 0) frq.erase(arr[l]);
-                l++;
+                while(frq.size() > 2) {
+                    frq[arr[l]]--;
+                    if(frq[arr[l]] == 0) {
+                        frq.erase(arr[l]);
+                        l++;
+                        break;
+                    }
+                    l++;
+                }
             }
             if(frq.size() <= 2) mxlen = max(mxlen,i-l+1);
         }
@@ -47,3 +53,5 @@ int main() {
     }
     return 0;
 }
+
+// } Driver Code Ends
